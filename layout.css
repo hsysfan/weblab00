@@ -29,6 +29,24 @@ div#first {
 	clear: right;
 }
 
+div#first_edu {
+	border: 4px solid #1D2475;
+	background-color: #CCCCCC;
+	border-radius: 15px;
+	padding: 5px;
+	margin-top: 10px;
+	clear: right;
+}
+
+div#first_movie {
+	border: 4px solid #1D2475;
+	background-color: #CCCCCC;
+	border-radius: 15px;
+	padding: 5px;
+	margin-top: 10px;
+	clear: right;
+}
+
 body {
 	background-image: url("http://selab.hanyang.ac.kr/courses/cse326/2015/problems/images/3/blueTextureBG.jpg");
 	background-position: center;
