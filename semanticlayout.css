@@ -3,7 +3,7 @@ h1 {
 	color: white;
 }
 
-div#merge {
+header {
 	background-color: #8E8E8E;
 	overflow: hidden;
 	color: #B7B7B7;
@@ -20,7 +20,7 @@ div#full {
 	background-color: white;
 }
 
-div#first {
+section {
 	border: 4px solid #1D2475;
 	background-color: #CCCCCC;
 	border-radius: 15px;
@@ -29,7 +29,7 @@ div#first {
 	clear: right;
 }
 
-div#first_movie {
+#first_edu{
 	border: 4px solid #1D2475;
 	background-color: #CCCCCC;
 	border-radius: 15px;
@@ -38,7 +38,7 @@ div#first_movie {
 	clear: right;
 }
 
-div#first_edu {
+#first_movie{
 	border: 4px solid #1D2475;
 	background-color: #CCCCCC;
 	border-radius: 15px;
@@ -46,6 +46,7 @@ div#first_edu {
 	margin-top: 10px;
 	clear: right;
 }
+
 
 body {
 	background-image: url("http://selab.hanyang.ac.kr/courses/cse326/2015/problems/images/3/blueTextureBG.jpg");
@@ -58,7 +59,7 @@ p>img {
 	float: right;
 }
 
-div#link {
+aside {
 	margin-top: 10px;
 	float: left;
 	width: 150px;
@@ -71,13 +72,13 @@ div#link {
 	border-bottom: none;
 	text-align: left;
 }
-.article {
+article {
 	margin-left: 168px;
 }
 
-#merge>*:hover   { background-color: #FFFF00; }
-#link>*:hover   { background-color: #FFFF00; }
-#first>*:hover   { background-color: #FFFF00; }
+header>*:hover   { background-color: #FFFF00; }
+aside>*:hover   { background-color: #FFFF00; }
+section>*:hover   { background-color: #FFFF00; }
 
 
 
