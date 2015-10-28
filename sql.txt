@@ -3,17 +3,17 @@ EX1
 create database college;
 
 create table student  (
-    student_id integer primary key,
-    name varchar(10),
-    year tinyint default '1',
-    dept_no integer,
-    major varchar(20) not null                                                             );
+    student_id integer primary key not null,
+    name varchar(10) not null,
+    year tinyint default '1' not null,
+    dept_no integer not null,
+    major varchar(20)                                                             );
 
 create table department (
-     dept_no integer primary key auto_increment,
-     dept_name varchar(20) unique,
-     office varchar(20),
-     office_tel varchar(13) not null
+     dept_no integer primary key auto_increment not null,
+     dept_name varchar(20) unique not null,
+     office varchar(20) not null,
+     office_tel varchar(13)
 );
 alter table student
     change column major major varchar(40);
@@ -61,21 +61,21 @@ insert into student values(20070007, 'Ashlee', 2, 4, 'Business Administration’
 
 DEPARTMENT
 
-insert into department values(1,'Computer Science', 'Engineering building', '02-3290-0123');
+insert into department(dept_name,office,office_tel) values('Computer Science', 'Engineering building', '02-3290-0123');
 
-insert into department values(2,'Electronic Engineering', 'Engineering building’, '02-3290-2345');
+insert into department(dept_name,office,office_tel) values('Electronic Engineering', 'Engineering building’, '02-3290-2345');
 
-insert into department values(3,'Law', 'Law building', '02-3290-7896');
+insert into department(dept_name,office,office_tel) values('Law', 'Law building', '02-3290-7896');
 
-insert into department values(4,'Business Administration', 'Administration building’, '02-3290-1112’);
+insert into department(dept_name,office,office_tel) values('Business Administration', 'Administration building’, '02-3290-1112’);
 
-insert into department values(5,'English Literature', 'Literature building', '02-3290-4412’);
+insert into department(dept_name,office,office_tel) values('English Literature', 'Literature building', '02-3290-4412’);
 
 
 EX3
 
 update department set dept_name = 'Electronic and Electrical Engineering' where dept_name = 'Electronic Engineering';
-insert into department values(6, 'Education', 'Education building', '02-3290-2347’);
+insert into department(dept_name,office,office_tel) values('Education', 'Education building', '02-3290-2347’);
 
 update student set major = 'Education' where name='Chloe’;
 
@@ -95,15 +95,17 @@ select * from student where year = 1 or year = 2;
 
 select * from student join department on student.dept_no = department.dept_no and dept_name = 'Business Administration';
 
+select name from student where student.dept_no = (select dept_no from department where dept_name = 'Business Administration');
+
 EX5
 
 select * from student where student_id like '2007%’;
 
 select * from student order by student_id;
 
-select major,AVG(year) from student group by major having AVG(year) > 3;
+select major,AVG(year) a from student group by major having AVG(year) > 3;
 
-select * from student where major = 'Business Administration' and student_id like '2007%' limit 2;
+select * from student where major = 'Business Administration' and student_id like '%2007%' limit 2;
 
 EX6
 
