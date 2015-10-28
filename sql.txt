@@ -1,0 +1,119 @@
+EX1
+
+create database college;
+
+create table student  (
+    student_id integer primary key,
+    name varchar(10),
+    year tinyint default '1',
+    dept_no integer,
+    major varchar(20) not null                                                             );
+
+create table department (
+     dept_no integer primary key auto_increment,
+     dept_name varchar(20) unique,
+     office varchar(20),
+     office_tel varchar(13) not null
+);
+alter table student
+    change column major major varchar(40);
+alter table student
+    add column gender varchar(10);
+alter table department
+    change column dept_name dept_name varchar(40);
+alter table department
+    change column office office varchar(30);
+
+
+EX2
+
+STUDENT
+
+insert into student values(20070002,’James Bond’,3,4,’Business Administration’);
+
+insert into student values(20030001,’Reonardo’,4,2,’Electronic Engineering’);
+insert into student values(20040003,’Julia’,3,2,’Electronic Engineering’);
+
+insert into student values(20060002,’Roosevelt’,3,1,’Computer Science’);
+
+insert into student values(20100002,’Fearne’,3,4,’Business Administration’);
+insert into student values(20110001, 'Chloe', 2, 1, 'Computer Science');
+
+insert into student values (20080003, 'Amy', 4, 3, 'Law') ;
+
+insert into student values(20040002, 'Selina', 4, 5, 'English Literature');
+
+insert into student values(20070001, 'Ellen', 4, 4, 'Business Administration');
+
+insert into student values(20100001, 'Kathy', 3, 4, 'Business Administration’);
+
+insert into student values(20110002, 'Lucy', 2, 2, 'Electronic Engineering');
+
+insert into student values(20030002, 'Michelle', 5, 1, 'Computer Science');
+
+insert into student values(20070003, 'April', 4, 3, 'Law');
+
+insert into student values(20070005, 'Alicia', 2, 5, 'English Literature');
+
+insert into student values(20100003, 'Yullia', 3, 1, 'Computer Science');
+
+insert into student values(20070007, 'Ashlee', 2, 4, 'Business Administration’);
+
+DEPARTMENT
+
+insert into department values(1,'Computer Science', 'Engineering building', '02-3290-0123');
+
+insert into department values(2,'Electronic Engineering', 'Engineering building’, '02-3290-2345');
+
+insert into department values(3,'Law', 'Law building', '02-3290-7896');
+
+insert into department values(4,'Business Administration', 'Administration building’, '02-3290-1112’);
+
+insert into department values(5,'English Literature', 'Literature building', '02-3290-4412’);
+
+
+EX3
+
+update department set dept_name = 'Electronic and Electrical Engineering' where dept_name = 'Electronic Engineering';
+insert into department values(6, 'Education', 'Education building', '02-3290-2347’);
+
+update student set major = 'Education' where name='Chloe’;
+
+delete from student where name = 'Michelle’;
+
+delete from student where name = 'Fearne’;
+
+EX4
+
+select * from student where major = 'Computer Science’;
+
+select student_id,year,major from student;
+
+select * from student where year = 3;
+
+select * from student where year = 1 or year = 2;
+
+select * from student join department on student.dept_no = department.dept_no and dept_name = 'Business Administration';
+
+EX5
+
+select * from student where student_id like '2007%’;
+
+select * from student order by student_id;
+
+select major,AVG(year) from student group by major having AVG(year) > 3;
+
+select * from student where major = 'Business Administration' and student_id like '2007%' limit 2;
+
+EX6
+
+select * from countries join languages on countries.code = languages.country_code where independence_year = 1948;
+
+
+
+
+
+
+
+
+
