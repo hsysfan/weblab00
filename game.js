@@ -19,8 +19,12 @@ function stopGame(){
 	targetBlocks = [];
 	selectedBlocks = [];
 	clearTimeout(timer);
+	var index = $$(".block");
+	for(var i=0;i<numberOfBlocks;i++){
+		index[i].addClassName("normal");
+	}
 	$("answer").update("0/0");
-	$("state").update("stop");
+	$("state").update("Stop");
 }
 
 function startToSetTarget(){
@@ -29,7 +33,6 @@ function startToSetTarget(){
 	targetBlocks = [];
 	selectedBlocks = [];;
 	clearTimeout(timer);
-	console.log(i);
 	while(i<3){
 		targetBlocks[i] = Math.floor(Math.random()*9);
 		for(var n=0;n<i;n++){
@@ -39,8 +42,7 @@ function startToSetTarget(){
 		}
 		i++;
 	}
-	console.log(targetBlocks);
-	setTimeout(setTargetToShow,interval);
+	timer = setTimeout(setTargetToShow,interval);
 }
 
 function setTargetToShow(){
@@ -49,7 +51,7 @@ function setTargetToShow(){
 	for(var i=0;i<numberOfTarget;i++){
 		index[targetBlocks[i]].addClassName("target");
 	}
-	setTimeout(showToSelect,interval);
+	timer = setTimeout(showToSelect,interval);
 }
 
 function showToSelect(){
@@ -65,13 +67,30 @@ function showToSelect(){
 			console.log(this.getAttribute("data-index"));
 		});
 	}
-	console.log("1");
-	setTimeout(selectToResult,interval);
+	timer = setTimeout(selectToResult,interval);
 }
 
 function selectToResult(){
-	
+	var correct=0;
+	var index = $$(".block");
+	$("state").update("Checking");
+	for(var i = 0; i<numberOfBlocks;i++){
+		index[i].stopObserving("click");
+	}
 	for(var i=0;i<numberOfTarget;i++){
 		index[selectedBlocks[i]].removeClassName("selected");
 	}
+	for(var i=0;i<numberOfTarget;i++){
+		for(var j=0;j<numberOfTarget;j++){
+			if(targetBlocks[i] == selectedBlocks[j]){
+				correct++;
+			}
+		}
+	}
+	var b = $("answer").innerHTML;
+	var a = b.split("/");
+	a[0] = parseInt(a[0]) + correct;
+	a[1] = parseInt(a[1]) + numberOfTarget;
+	$("answer").update(a[0]+"/"+a[1]);
+	timer = setTimeout(startToSetTarget,interval);
 }
